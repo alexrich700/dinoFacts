@@ -1,5 +1,4 @@
-{
-    "Dinos": [
+let Dinos = [
         {
             "species": "Triceratops",
             "weight": 13000,
@@ -73,4 +72,3 @@
             "fact": "All birds are living dinosaurs."
         }
     ]
-}
