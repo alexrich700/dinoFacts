@@ -81,7 +81,7 @@
 
         // Invoking the function to prepare the infographic
         prepare();
-        compare2()
+        compare3()
     });
 
     // Create Dino Compare Method 1 
@@ -139,12 +139,42 @@
     // Create Dino Compare Method 3
     function compare3 () {
         myDinos.map(dino => {
-
+            // Get Weight, Height, and Diet to compare & randomize the outcode
             let dinoArray = Object.keys(dino);
             let dinoFacts = [dinoArray[1], dinoArray[2], dinoArray[3]];
             let randomValue = dinoFacts[Math.floor(dinoFacts.length * Math.random())];
 
-            
+            function weightCalled () {
+                let weighsMore;
+                let winner;
+                dino.weight > user.weight ? (weighsMore=dino.weight-user.weight, winner="dino") : (weighsMore=user.weight-dino.weight, winner="user");
+                winner === "dino" ? (console.log(`The ${dino.species} weighs ${weighsMore} lbs. more than ${user.name}!`)) : (console.log(`${user.name} weighs ${weighsMore} lbs. more than the ${dino.species}!`));
+            }
+
+            function heightCalled () {
+                let isTaller;
+                let winner;
+                dino.height > user.height ? (isTaller=dino.height-user.height, winner="dino") : (isTaller=user.height-dino.height, winner="user");
+                winner === "dino" ? (console.log(`The ${dino.species} is ${isTaller} inches taller than ${user.name}!`)) : (console.log(`${user.name} weighs ${isTaller} inches taller than the ${dino.species}!`));
+            }
+
+            function dietCalled () {
+                dino.diet === user.diet ? (console.log(`The ${dino.species} and ${user.name} have the same diet!`)) : (console.log(`The ${user.name} is a ${user.diet} while the ${dino.species} is a ${dino.diet}`));
+            }
+
+            switch (randomValue) {
+                case "weight":
+                    weightCalled ();
+                    break;
+                case "height":
+                    heightCalled ();
+                    break;
+                case "diet":
+                    dietCalled ();
+                    break;
+                default:
+                    console.log("Something broke!");
+            }
 
         })
     }
